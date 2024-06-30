@@ -17,10 +17,10 @@ function App() {
     <div className="App"> 
       <Navbar />
       <div className="main-content">
-        <h1>Jana Sahayi</h1>
+        <h1>ജന സഹായി</h1>
         
         <div className="chat-container">
-        <h2>എനിക്ക് നിങ്ങളെ എങ്ങനെ സഹായിക്കാനാകും?</h2>
+        {/* <h2>എനിക്ക് നിങ്ങളെ എങ്ങനെ സഹായിക്കാനാകും?</h2> */}
           <ChatBox messages={messages} />
           <ChatInput addMessage={addMessage} />
         </div>
