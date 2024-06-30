@@ -12,17 +12,23 @@ function App() {
   const addMessage = (message, sender) => {
     setMessages(prevMessages => [...prevMessages, { text: message, sender }]);
   };
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleSendClick = () => {
+    setIsVisible(false);
+  };
 
   return (
     <div className="App"> 
       <Navbar />
       <div className="main-content">
-        <h1>ജന സഹായി</h1>
+        <h1>Jana Sahayi</h1>
         
         <div className="chat-container">
-        {/* <h2>എനിക്ക് നിങ്ങളെ എങ്ങനെ സഹായിക്കാനാകും?</h2> */}
+        {isVisible && <h2>എനിക്ക് നിങ്ങളെ എങ്ങനെ സഹായിക്കാനാകും?</h2>}
+        {/* Pass the handleSendClick function to the ChatInput component */}
           <ChatBox messages={messages} />
-          <ChatInput addMessage={addMessage} />
+          <ChatInput addMessage={addMessage} onSend={handleSendClick}/>
         </div>
       </div>
     </div>
