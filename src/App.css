@@ -1,0 +1,53 @@
+/* src/App.css */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #141414;
+  color: #ffffff;
+
+}
+
+h1.logo {
+  
+  padding: 20px;
+  background-color: #1e1e1e;
+  margin: 0;
+  border-bottom: 1px solid #444444;
+  margin-left: 450px;
+  margin-right: 200px;
+  text-align: center;
+}
+.chat-container h2{
+  
+  padding-left: 393px;
+  padding-top: 150px;
+  
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+  background-color: #282828;
+
+  
+}
+
+nav{
+  background:#ffffff;
+  height: 80px;
+  width: 100px;
+  border: #ffffff;
+}
+.main-content {
+  margin-left: 201px; /* Adjust to account for navbar width */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  
+}
+
+
