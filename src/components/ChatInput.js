@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ChatInput.css';
 
-const ChatInput = ({ addMessage }) => {
+const ChatInput = ({ addMessage, onSend }) => {
   const [input, setInput] = useState('');
   const [isSending, setIsSending] = useState(false);
 
@@ -29,6 +29,11 @@ const ChatInput = ({ addMessage }) => {
       }
 
       setIsSending(false);
+    }
+
+    // Call the onSend function to hide the h2 tag
+    if (onSend) {
+      onSend();
     }
   };
 
