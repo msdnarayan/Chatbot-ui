@@ -48,14 +48,14 @@
 }
 
 .feedback-button {
-  background-color: #555555;
+  background-color: #353535;
   color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
  /* margin-left: 318px;*/
-  padding: 1px 3px;
+  padding: 1px px;
   cursor: pointer;
-  font-size: smaller;
+  font-size: xx-small;
 }
 
 .feedback-input {
@@ -82,4 +82,17 @@
 .icon:hover{
   transform: scale(1.1);
   
+}
+.popup {
+  position: fixed;
+  top: 20px;  /* Changed from bottom to top */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #121312;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  font-size: 16px;
 }
