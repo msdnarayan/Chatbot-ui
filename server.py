@@ -30,8 +30,8 @@ def feedback():
     feedback = data.get('feedback')
     index = data.get('index')
     global messages
-    print(messages[index])
     print(messages[index-1])
+    print(messages[index])
     # Log the feedback to the terminal
     print(f"Received feedback for message {index}: {feedback}")
     
