@@ -14,7 +14,8 @@
 .chat-message {
   margin: 10px 0;
   display: flex;
-  
+  flex-direction: column; /* Added to stack feedback input below message */
+  align-items: start;
 }
 
 .message {
@@ -28,15 +29,57 @@
   color: #ffffff;
   border-top-right-radius: 0;
   margin-left: auto; /* Align user messages to the right */
-  margin-right: 185px; /* Adjust margin to move messages slightly left */
+ /* margin-right: 320px;  Adjust margin to move messages slightly left */
   margin-bottom: 15px;
 } 
 
 .bot .message {
+  
   background-color: #444444;
   color: #ffffff;
   border-top-left-radius: 0;
-  margin-bottom: 15px;
-  margin-right: auto; /* Align bot messages to the left */
-  margin-left: 318px; /* Adjust margin to move messages slightly right */
+  margin-bottom: 0%;
+  margin-right: auto; /*Align bot messages to the left */
+ /* margin-left: 318px;  Adjust margin to move messages slightly right */
+}
+
+.feedback-container {
+  margin-top: 3px; /* Adjust spacing between message and feedback input */
+}
+
+.feedback-button {
+  background-color: #555555;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+ /* margin-left: 318px;*/
+  padding: 1px 3px;
+  cursor: pointer;
+  font-size: smaller;
+}
+
+.feedback-input {
+  margin-top: 5px; /* Adjust spacing between message and feedback input */
+}
+
+.feedback-input input {
+   /* Adjust input width based on container */
+  padding: 4px;
+  border: none;
+  /*margin-right: auto;  Align bot messages to the left */
+ /* margin-left: 318px;*/
+  border-radius: 5px;
+  
+  background-color: #555555;
+  color: #ffffff;
+  outline: none;
+}
+
+.icon{
+  padding-left: 7px;
+  margin-top: 3px;
+}
+.icon:hover{
+  transform: scale(1.1);
+  
 }
