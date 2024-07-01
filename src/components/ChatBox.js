@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './ChatBox.css';
 import axios from 'axios';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown';
 
 const ChatBox = ({ messages, addFeedback }) => {
   const chatContainerRef = useRef(null);
   const [feedbackIndex, setFeedbackIndex] = useState(null);
+  const [feedbackText, setFeedbackText] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -13,11 +15,11 @@ const ChatBox = ({ messages, addFeedback }) => {
 
   const toggleFeedbackInput = (index) => {
     setFeedbackIndex(feedbackIndex === index ? null : index);
+    setFeedbackText(''); // Clear the feedback input text when toggling
   };
 
-  const handleFeedbackChange = (index, event) => {
-    const { value } = event.target;
-    addFeedback(index, value); // Update feedback for the message at index
+  const handleFeedbackChange = (event) => {
+    setFeedbackText(event.target.value);
   };
 
   const handleKeyPress = (index, event) => {
@@ -26,6 +28,7 @@ const ChatBox = ({ messages, addFeedback }) => {
       const { value } = event.target;
       addFeedback(index, value); // Save feedback when Enter is pressed
       sendFeedbackToServer(index, value); // Send feedback to the server
+      setFeedbackText(''); // Clear the feedback input text
       setFeedbackIndex(null); // Close the feedback input
     }
   };
@@ -38,6 +41,10 @@ const ChatBox = ({ messages, addFeedback }) => {
       });
       console.log('Feedback response:', response.data);
       // Optionally, you can add logic here to update the UI with the feedback response
+      setShowPopup(true); // Show the success popup
+      setTimeout(() => {
+        setShowPopup(false); // Hide the popup after 3 seconds
+      }, 3000);
     } catch (error) {
       console.error('Error sending feedback:', error);
     }
@@ -55,21 +62,25 @@ const ChatBox = ({ messages, addFeedback }) => {
                   <input
                     type="text"
                     placeholder="Provide feedback..."
-                    value={msg.feedback || ''}
-                    onChange={(e) => handleFeedbackChange(index, e)}
+                    value={feedbackText}
+                    onChange={handleFeedbackChange}
                     onKeyPress={(e) => handleKeyPress(index, e)}
                   />
                 </div>
               ) : (
                 <button className="feedback-button" onClick={() => toggleFeedbackInput(index)}>
-                  Provide Feedback
+                  <ThumbsUpDownIcon/>
                 </button>
               )}
-                   
             </div>
           )}
         </div>
       ))}
+      {showPopup && (
+        <div className="popup">
+          നിങ്ങളുടെ അഭിപ്രായത്തിന് നന്ദി!
+        </div>
+      )}
     </div>
   );
 };
