@@ -9,13 +9,14 @@ const ChatInput = ({ addMessage, onSend }) => {
     if (input.trim()) {
       addMessage(input, 'user');
       setIsSending(true);
+      const messageToSend = input;
       setInput('');
 
       try {
         const response = await fetch('http://127.0.0.1:5000/answer', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question: input })
+          body: JSON.stringify({ question: messageToSend })
         });
 
         if (!response.ok) {
@@ -29,11 +30,7 @@ const ChatInput = ({ addMessage, onSend }) => {
       }
 
       setIsSending(false);
-    }
-
-    // Call the onSend function to hide the h2 tag
-    if (onSend) {
-      onSend();
+      onSend(); // Call the onSend function when the message is sent
     }
   };
 
@@ -44,10 +41,10 @@ const ChatInput = ({ addMessage, onSend }) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && !isSending && handleSend()}
-        placeholder="Type a message..."
+        placeholder="ഒരു സന്ദേശം ടൈപ്പ് ചെയ്യുക..."
       />
       <button onClick={handleSend} disabled={isSending}>
-        Send
+        അയയ്ക്കുക
       </button>
     </div>
   );
