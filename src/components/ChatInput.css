@@ -4,13 +4,14 @@
   padding: 10px;
   background-color: #333333;
   border-top: 1px solid #444444;
-  position: fixed;
+  position: relative;
   bottom: 12px;
-  margin-right: 50px;
-  margin-left: 325px;
+ /* margin-right: 50px;*/
+ /* margin-left: 325px;*/
   border-radius: 15px;
-  width: 53%;
+ /* width: 53%;*/
   box-sizing: border-box;
+  
 }
 
 .chat-input input {
